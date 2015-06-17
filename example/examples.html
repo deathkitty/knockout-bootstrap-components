@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Knockout Bootstrap Examples</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="../src/knockout-bootstrap-components.js" type="application/javascript"></script>
+
+    <script src="exampleViewModel.js" type="application/javascript"></script>
+</head>
+<body id="main">
+
+<kobs-table params="datasource: tableData, pageable: true">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: $data">
+        <tr>
+            <td data-bind="text: number">-</td>
+            <td data-bind="text: column1">-</td>
+            <td data-bind="text: column2">-</td>
+            <td data-bind="text: column3">-</td>
+            <td data-bind="text: column4">-</td>
+        </tr>
+        </tbody>
+    </table>
+</kobs-table>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="true" />
+    <inspection_tool class="ExceptionFromCatchWhichDoesntWrap" enabled="false" level="ERROR" enabled_by_default="false">
+      <option name="ignoreGetMessage" value="false" />
+      <option name="ignoreCantWrap" value="false" />
+    </inspection_tool>
+    <inspection_tool class="NewIssuesGlobalInspectionTool" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="OldIssuesGlobalInspectionTool" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="ThrowsRuntimeException" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="UncheckedExceptionClass" enabled="false" level="ERROR" enabled_by_default="false" />
+  </profile>
+</component>
