@@ -4,16 +4,19 @@ function kobsTableExampleViewModel(){
     self.tableData = ko.observable();
     
     self.getData = function(page, pageSize){
-        $.getJSON("../data/table" + 1 + ".json", function(data){
+        $.getJSON("../data/table" + page + ".json", function(data){
             self.tableData(data);
         });
     };
     
     self.next = function(page, pageSize){
+        console.log("Next");
+        
         self.getData(page, pageSize);
     };
 
     self.previous = function(page, pageSize){
+        console.log("Previous");
         self.getData(page, pageSize);
     };
     

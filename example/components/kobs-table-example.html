@@ -36,7 +36,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="../examples.html">Home <span class="sr-only">(current)</span></a></li>
+                <li><a href="../examples.html">Home</a></li>
                 <li class="active"><a href="#">Table <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Combo Box</a></li>
             </ul>
@@ -44,7 +44,10 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<kobs-table params="datasource: tableData, pageable: true">
+<kobs-table params="datasource: tableData, 
+                    pageable: true,
+                    nextPage: next,
+                    previousPage: previous">
     <table class="table">
         <thead>
         <tr>
@@ -77,8 +80,7 @@
 <!--Knockout js -->
 <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
 
-<script src="../../build/knockout-bootstrap-templates.js" type="application/javascript"></script>
-<script src="../../build/knockout-bootstrap-components.js" type="application/javascript"></script>
+<script src="../../dist/knockout-bootstrap-components-all.js" type="application/javascript"></script>
 <script src="kobsTableExampleViewModel.js" type="application/javascript"></script>
 </body>
 </html>

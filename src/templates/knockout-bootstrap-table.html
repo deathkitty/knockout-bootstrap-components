@@ -22,17 +22,15 @@
             </li>
         </ul>-->
 
-
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"><<</a></li>
+                    <li><a href="#" data-bind="click: previousPage"><<</a></li>
                     <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li><a href="#">>></a></li>
+                    <li><a href="#" data-bind="click: nextPage">>></a></li>
                 </ul>
 
                 <p class="navbar-text navbar-right">Showing <span class="badge" data-bind="text: pageSize">0</span> of <span class="badge" data-bind="text:total">0</span> items.</p>
