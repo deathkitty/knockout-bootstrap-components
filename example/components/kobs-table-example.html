@@ -36,18 +36,49 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="components/kobs-table-example.html">Table</a></li>
+                <li><a href="../examples.html">Home <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">Table <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Combo Box</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
+<kobs-table params="datasource: tableData, pageable: true">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Position</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: $data">
+        <tr>
+            <td data-bind="text: number">-</td>
+            <td data-bind="text: name">-</td>
+            <td data-bind="text: surname">-</td>
+            <td data-bind="text: position">-</td>
+            <!--<td data-bind="text: moment(date).format('DD-MM-YYYY')">-</td>-->
+            <td data-bind="text: date">-</td>
+        </tr>
+        </tbody>
+    </table>
+</kobs-table>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<!--Knockout js -->
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
+
+<script src="../../build/knockout-bootstrap-templates.js" type="application/javascript"></script>
+<script src="../../build/knockout-bootstrap-components.js" type="application/javascript"></script>
+<script src="kobsTableExampleViewModel.js" type="application/javascript"></script>
 </body>
 </html>

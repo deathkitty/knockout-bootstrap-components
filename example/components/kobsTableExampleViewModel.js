@@ -1,10 +1,10 @@
-function ExampleViewModel(){
+function kobsTableExampleViewModel(){
     var self = this;
     
     self.tableData = ko.observable();
     
     self.getData = function(page, pageSize){
-        $.getJSON("data/table" + 1 + ".json", function(data){
+        $.getJSON("../data/table" + 1 + ".json", function(data){
             self.tableData(data);
         });
     };
@@ -21,5 +21,5 @@ function ExampleViewModel(){
 }
 
 $(function(){
-    ko.applyBindings(new ExampleViewModel(), document.getElementById("main"));
+    ko.applyBindings(new kobsTableExampleViewModel(), document.getElementById("main"));
 });
