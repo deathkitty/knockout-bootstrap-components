@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            pre:["dist", "tmp"],
+            pre:["dist"],
             post:["tmp"]
         },
         htmlConvert: {
@@ -42,6 +42,15 @@ module.exports = function(grunt) {
                     dest: 'dist'
                 }]
             }
+        },
+        watch: {
+            scripts: {
+                files: ['**/*.js', '**/*.html'],
+                tasks: ['htmlConvert', 'concat', 'uglify'],
+                options: {
+                    spawn: false
+                }
+            }
         }
     });
 
@@ -50,6 +59,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-to-js');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
     grunt.registerTask('default', ['clean:pre', 'htmlConvert', 'concat', 'uglify', 'clean:post']);
