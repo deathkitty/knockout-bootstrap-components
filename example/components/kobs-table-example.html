@@ -45,10 +45,10 @@
 </nav>
 
 <kobs-table params="datasource: tableData, 
-                    pageMode: 'pagination',
+                    pageMode: 'pager',
                     nextPage: next,
                     previousPage: previous">
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>#</th>
@@ -59,13 +59,16 @@
         </tr>
         </thead>
         <tbody data-bind="foreach: $data">
-        <tr>
+        <tr data-bind="css:{success: updated, danger: error}">
             <td data-bind="text: number">-</td>
             <td data-bind="text: name">-</td>
             <td data-bind="text: surname">-</td>
             <td data-bind="text: position">-</td>
             <!--<td data-bind="text: moment(date).format('DD-MM-YYYY')">-</td>-->
             <td data-bind="text: date">-</td>
+            <td>
+                <input type="checkbox" data-bind="checked: selected"/>
+            </td>
         </tr>
         </tbody>
     </table>

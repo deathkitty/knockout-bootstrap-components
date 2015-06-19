@@ -10,13 +10,10 @@ function kobsTableExampleViewModel(){
     };
     
     self.next = function(page, pageSize){
-        console.log("Next");
-        
         self.getData(page, pageSize);
     };
 
     self.previous = function(page, pageSize){
-        console.log("Previous");
         self.getData(page, pageSize);
     };
     

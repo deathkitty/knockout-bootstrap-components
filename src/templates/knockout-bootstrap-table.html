@@ -23,8 +23,8 @@
 
         <!-- ko if:pageMode() == 'pager' -->
         <ul class="pager">
-            <li data-bind="click: previousPage"><a href="#">Previous</a></li>
-            <li data-bind="click: nextPage"><a href="#">Next</a></li>
+            <li data-bind="css: {disabled: !hasPreviousPage()}, click: previousPage"><a href="#">Previous</a></li>
+            <li data-bind="css: {disabled: !hasNextPage()}, click: nextPage"><a href="#">Next</a></li>
         </ul>
         <!-- /ko -->
     </nav>
