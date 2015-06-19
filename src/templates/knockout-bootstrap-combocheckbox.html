@@ -1,0 +1,6 @@
+<div class="cbox">
+    <p data-bind="click:toggleMenu">Select...</p>
+    <ul data-bind="visible:show, foreach:testData">
+        <li data-bind="click:$parent.itemClicked"><input type="checkbox"/><span data-bind="text:label"></span></li>
+    </ul>
+</div>
