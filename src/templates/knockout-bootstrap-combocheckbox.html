@@ -1,6 +1,24 @@
-<div class="cbox">
-    <p data-bind="click:toggleMenu">Select...</p>
-    <ul data-bind="visible:show, foreach:testData">
-        <li data-bind="click:$parent.itemClicked"><input type="checkbox"/><span data-bind="text:label"></span></li>
+<style>
+    div.checkbox:hover{
+        background-color: rgba(0,0,0, 0.2);
+    }
+</style>
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="padding: 0px;" data-bind="foreach:data, click:onDropdownClick, clickBubble: false">
+        <li style="padding: 0px;" data-bind="click:$parent.listItemClicked">
+            <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px; padding: 4px 10px;">
+                <label style="margin: 0px;">
+                    <input type="checkbox" value="" style="margin-top: 2px;" data-bind="checked:selected"/>
+                    <!-- ko text:label --><!-- /ko -->
+                </label>
+            </div>
+        </li>
     </ul>
 </div>
+
+

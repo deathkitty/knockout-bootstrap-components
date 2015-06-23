@@ -3,79 +3,47 @@ $(function(){
         viewModel: function(params){
             var self = this;
 
-            // When the page loads, hide the combo box's menu.
-            self.show = ko.observable(false);
+            // Get the values for the combo-box data, selected data, prompt and key names from the parameters or use the
+            // default values.
+            self.comboboxData = params.data || undefined;
+            self.selectedData = params.selectedData || undefined;
 
-            self.testData = ko.observableArray([
-                {label:"Test 001", value:"test_001"},
-                {label:"Test 002", value:"test_002"},
-                {label:"Test 003", value:"test_003"},
-                {label:"Test 004", value:"test_004"},
-                {label:"Test 005", value:"test_005"},
-                {label:"Test 006", value:"test_006"},
-                {label:"Test 007", value:"test_007"},
-                {label:"Test 008", value:"test_008"},
-                {label:"Test 009", value:"test_009"},
-                {label:"Test 010", value:"test_010"},
-                {label:"Test 011", value:"test_011"},
-                {label:"Test 012", value:"test_012"},
-                {label:"Test 013", value:"test_013"},
-                {label:"Test 014", value:"test_014"},
-                {label:"Test 015", value:"test_015"},
-                {label:"Test 016", value:"test_016"},
-                {label:"Test 017", value:"test_017"},
-                {label:"Test 018", value:"test_018"},
-                {label:"Test 019", value:"test_019"},
-                {label:"Test 020", value:"test_020"}
-            ]);
-
-            // When the Select button is clicked, show/hide the menu.
-            self.toggleMenu = function(){
-                self.show(!self.show());
+            // Refresh the combo-box data to reflect the checked/unchecked state of the checkboxes.  This is done to
+            // notify all the observers that a change occurred in the data so that the user interface may be updated.
+            self.refresh = function(){
+                // Create a temp array with all the elements of the combo-box data in their current state.
+                var tempArray = self.comboboxData().slice(0);
+                // Remove all elements from the combobox array.
+                self.comboboxData.removeAll();
+                // Re-insert all the data into the combobox array.
+                for(var index in tempArray){
+                    self.comboboxData.push(tempArray[index]);
+                }
             };
 
-            // When a menu item is clicked, toggle the check box.
-            self.itemClicked = function(data, e){
-                var item = $(e.target.childNodes[0]) || undefined;
-                if (item){
-                    item.prop('checked', !item.prop('checked'));
+            // Prevent the combo-box from closing once an item has been selected.
+            self.onDropdownClick = function(data){
+                return true;
+            };
+
+            // When a list item is clicked, invert the selection status then update the array of selected items.
+            self.listItemClicked = function(data){
+                // Invert the selection status.
+                data.selected = !data.selected;
+
+                // If the item was checked, add it to the array of selected items.  If it was unchecked, remove it from
+                // the aforementioned array.
+                if (data.selected){
+                    self.selectedData.push(data);
+                }else if(!data.selected){
+                    self.selectedData.remove(data);
                 }
+
+                // Refresh the combo-box data.
+                self.refresh();
+                return true;
             };
         },
         template: kobsTemplates["templates/knockout-bootstrap-combocheckbox.html"]
     });
 });
-
-
-
-
-
-
-/*
-
-$(document).ready(function(){
-    // When the page loads, hide the combo box's menu.
-    $('.cbox>ul').hide();
-
-    // When the Select button is clicked, show/hide the menu.
-    $('.cbox>p').click(function(){
-        $('.cbox>ul').toggle();
-    });
-
-    // When a menu item is clicked, toggle the check box.
-    $('.cbox>ul>li').click(function(e){
-
-    });
-
-    // Add an event listener to the document.  When clicking outside of the combo box container, hide the menu.
-    $(document).click(function (e){
-        var comboBox = $('.cbox');
-        var menu = $('.cbox>ul');
-
-        if(!$(e.target).is(comboBox) && comboBox.has(e.target).length === 0){
-            menu.hide();
-        }
-    });
-});
-
-    */
