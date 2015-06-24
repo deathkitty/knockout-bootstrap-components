@@ -79,7 +79,32 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<kobs-combocheckbox params="data:testData, selectedData:selectedItems"></kobs-combocheckbox>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+            <kobs-combocheckbox params="
+                           data:testData,
+                           selected:selectedItems,
+                           prompt:'No no no NO!',
+                           labelKey:'stupidKeyName',
+                           valueKey:'idioticKeyName',
+                           stateKey:'repulsiveKeyName'
+                       ">
+            </kobs-combocheckbox>
+        </div>
+        <div class="col-lg-2">
+            <kobs-combocheckbox params="
+                           data:testData,
+                           height:'500px',
+                           readOnly:false,
+                           selected:selectedItems,
+                           labelKey:'stupidKeyName',
+                           stateKey:'repulsiveKeyName'
+                       ">
+            </kobs-combocheckbox>
+        </div>
+    </div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

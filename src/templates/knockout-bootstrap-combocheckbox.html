@@ -4,21 +4,46 @@
     }
 </style>
 
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Dropdown
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="padding: 0px;" data-bind="foreach:data, click:onDropdownClick, clickBubble: false">
-        <li style="padding: 0px;" data-bind="click:$parent.listItemClicked">
-            <div class="checkbox" style="margin-top: 0px; margin-bottom: 0px; padding: 4px 10px;">
-                <label style="margin: 0px;">
-                    <input type="checkbox" value="" style="margin-top: 2px;" data-bind="checked:selected"/>
-                    <!-- ko text:label --><!-- /ko -->
-                </label>
-            </div>
-        </li>
-    </ul>
+<!-- Combo-box wrapper div and input groups. -->
+<div class="input-group">
+    <div class="input-group-btn">
+
+        <!-- The text-box where the filter text can be typed in if it is not set as read-only. -->
+        <input type="text"
+               class="form-control dropdown-toggle"
+               aria-label="..."
+               data-bind="value:displayText(), attr:{readonly:inputIsReadOnly}, hasFocus:inputHasFocus, event:{keyup:inputKeyPressEvent}"
+               data-toggle="dropdown" />
+
+        <!-- The button on the right-hand side of the text-box.  This simply served to create a caret. -->
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span class="caret"></span>
+        </button>
+
+        <!-- The combo-box data list. -->
+        <ul class="dropdown-menu col-xs-12"
+            aria-labelledby="dropdownMenu1"
+            style="padding: 0px; overflow: auto;"
+            data-bind="foreach:filteredItems, click:onDropdownClick, clickBubble: false, style:{maxHeight:listHeight}">
+
+            <!-- Each item in the combo-box data list. -->
+            <li style="padding: 0px;"
+                data-bind="click:$parent.listItemClicked">
+
+                <div class="checkbox"
+                     style="margin-top: 0px; margin-bottom: 0px; padding: 4px 10px;">
+
+                    <label style="margin: 0px;">
+                        <input type="checkbox"
+                               value=""
+                               style="margin-top: 2px;"
+                               data-bind="checked:$data[$parent.stateKeyName]"/>
+                        <!-- ko text:$data[$parent.labelKeyName] --><!-- /ko -->
+                    </label>
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
 </div>
-
-
