@@ -1,32 +1,74 @@
-<!-- ko with: datasource -->
-<!-- ko template: {nodes: $componentTemplateNodes, data: data} --><!-- /ko -->
-<!-- /ko -->
+<div style="position: relative">
 
-<div class="panel panel-default">
-    <nav>
-        <!-- ko if:pageMode() == 'pagination' -->
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div data-bind="if: pageMode() == 'pagination'" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li data-bind="css: {disabled: !hasPreviousPage()}" class="disabled"><a href="#" data-bind="click: previousPage"><<</a></li>
-                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li data-bind="css: {disabled: !hasNextPage()}"><a href="#" data-bind="click: nextPage">>></a></li>
-                </ul>
-
-                <p class="navbar-text navbar-right">Showing page <span class="badge" data-bind="text: page">0</span> of <span class="badge" data-bind="text:pages">0</span></p>
+    <!-- ko if:loading -->
+    <div style="position: absolute; width: 100%; height: 100%; background-color: rgba(255,255,255,0.5); z-index: 99">
+        <div class="progress center-block" style="position: relative; top: 40%; width: 25%">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                <span class="sr-only"></span>
             </div>
         </div>
-        <!-- /ko -->
+    </div>
+    <!-- /ko -->
 
-        <!-- ko if:pageMode() == 'pager' -->
-        <ul class="pager">
-            <li data-bind="click: previousPage"><a href="#">Previous</a></li>
-            <li data-bind="click: nextPage"><a href="#">Next</a></li>
-        </ul>
-        <!-- /ko -->
-    </nav>
+    <!-- ko with: datasource -->
+
+    <!-- ko if: $data.data -->
+
+    <!-- ko template: {nodes: $componentTemplateNodes, data: data} --><!-- /ko -->
+
+    <!-- /ko -->
+
+    <!-- /ko -->
+
+    <!-- ko if: !datasource.data -->
+    
+    <!-- ko template: {nodes: $componentTemplateNodes} --><!-- /ko -->
+
+    <!-- /ko -->
+    
+    <div class="panel panel-default">
+        <nav>
+            <!-- ko if:pageMode() == 'pagination' -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div data-bind="if: pageMode() == 'pagination'" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li data-bind="css: {disabled: !hasPreviousPage()}" class="disabled"><a href="#" data-bind="click: previousPage"><<</a></li>
+                        
+                        <!-- ko foreach:showPages -->
+                        <li><a href="#" data-bind="text:$data"></a></li>
+                        <!-- /ko -->
+                        
+                        <li data-bind="css: {disabled: !hasNextPage()}"><a href="#" data-bind="click: nextPage">>></a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <p class="navbar-text" style="margin-right: 0">Page size:</p>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <!-- ko text: pageSize --><!-- /ko --> <span class="caret"></span>
+                            </a>
+                            <ul data-bind="foreach: pageSizes" class="dropdown-menu">
+                                <li data-bind="click: $parent.selectPageSize"><a data-bind="text: $data" href="#"></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="navbar-text">Showing page <span class="badge" data-bind="text: page">0</span> of <span class="badge" data-bind="text:pages">0</span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /ko -->
+
+            <!-- ko if:pageMode() == 'pager' -->
+            <ul class="pager">
+                <li data-bind="css: {disabled: !hasPreviousPage()}, click: previousPage"><a href="#">Previous</a></li>
+                <li data-bind="css: {disabled: !hasNextPage()}, click: nextPage"><a href="#">Next</a></li>
+            </ul>
+            <!-- /ko -->
+        </nav>
+    </div>
+
 </div>
-

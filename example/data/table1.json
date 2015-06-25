@@ -8,38 +8,50 @@
       "name": "Piet",
       "surname": "Pompies",
       "position": "Developer",
-      "date": "2012-04-23T00:00:00.000Z"
+      "date": "2012-04-23T00:00:00.000Z",
+      "selected":false,
+      "updated":true,
+      "error":false
     },
     {
       "number": 2,
       "name": "Noob",
       "surname": "Meyer",
       "position": "Designer",
-      "date": "2012-04-23T00:00:00.000Z"
-    }
-  ,
+      "date": "2012-04-23T00:00:00.000Z",
+      "selected":true,
+      "updated":false,
+      "error":true
+    },
     {
       "number": 3,
       "name": "John",
       "surname": "Johnson",
       "position": "Tea Boy",
-      "date": "2012-04-23T00:00:00.000Z"
-    }
-  ,
+      "date": "2012-04-23T00:00:00.000Z",
+      "selected":true,
+      "updated":true,
+      "error":true
+    },
     {
       "number": 4,
       "name": "Marie",
       "surname": "Marias",
       "position": "Tea Lady",
-      "date": "2012-04-23T00:00:00.000Z"
-    }
-  ,
+      "date": "2012-04-23T00:00:00.000Z",
+      "selected":true,
+      "updated":true,
+      "error":false
+    },
     {
       "number": 5,
       "name": "Hugh",
       "surname": "Jackman",
       "position": "Wolverine",
-      "date": "2012-04-23T00:00:00.000Z"
+      "date": "2012-04-23T00:00:00.000Z",
+      "selected":false,
+      "updated":false,
+      "error":false
     }
   ]
 }
