@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Knockout Bootstrap Table</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -46,9 +46,9 @@
 
 <kobs-table params="datasource: tableData, 
                     pageMode: 'pagination',
-                    nextPage: next,
-                    previousPage: previous">
-    <table class="table">
+                    dataFunction: getData,
+                    loading: tableLoading">
+    <table class="table table-condensed table-striped">
         <thead>
         <tr>
             <th>#</th>
@@ -59,13 +59,16 @@
         </tr>
         </thead>
         <tbody data-bind="foreach: $data">
-        <tr>
+        <tr data-bind="css:{success: updated, danger: error}">
             <td data-bind="text: number">-</td>
             <td data-bind="text: name">-</td>
             <td data-bind="text: surname">-</td>
             <td data-bind="text: position">-</td>
             <!--<td data-bind="text: moment(date).format('DD-MM-YYYY')">-</td>-->
             <td data-bind="text: date">-</td>
+            <td>
+                <input type="checkbox" data-bind="checked: selected"/>
+            </td>
         </tr>
         </tbody>
     </table>

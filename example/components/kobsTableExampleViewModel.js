@@ -3,24 +3,15 @@ function kobsTableExampleViewModel(){
     
     self.tableData = ko.observable();
     
+    self.tableLoading = ko.observable(false);
+    
     self.getData = function(page, pageSize){
+        self.tableLoading(true);
         $.getJSON("../data/table" + page + ".json", function(data){
             self.tableData(data);
+            self.tableLoading(false);
         });
     };
-    
-    self.next = function(page, pageSize){
-        console.log("Next");
-        
-        self.getData(page, pageSize);
-    };
-
-    self.previous = function(page, pageSize){
-        console.log("Previous");
-        self.getData(page, pageSize);
-    };
-    
-    self.getData(1, 10);
 }
 
 $(function(){

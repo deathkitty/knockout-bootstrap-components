@@ -45,10 +45,46 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['**/*.js', '**/*.html'],
-                tasks: ['htmlConvert', 'concat', 'uglify'],
+                files: [
+                    'public/**/*.js', 'public/**/*.html', 'public/**/*.styl',
+                    'src/**/*.js', 'src/**/*.html', 'src/**/*.styl'
+                ],
+                tasks: ['bower', 'htmlConvert', 'concat', 'uglify', 'stylus'],
                 options: {
                     spawn: false
+                }
+            }
+        },
+        stylus: {
+            compile: {
+                //expand: true,
+                cwd: 'public/stylesheets/',
+                src: '*.styl',
+                dest: 'public/stylesheets/',
+                ext: '.css',
+                options: {
+                    paths: ['node_modules'],
+                    use:[
+                        require('jeet'),
+                        require('rupture')
+                    ]
+                    //import: [
+                    //    'jeet/stylus/jeet',
+                    //    'rupture/rupture'
+                    //]
+                }
+            }
+        },
+        bower: {
+            install: {
+                options: {
+                    targetDir: './public/bower_components',
+                    layout: 'byType',
+                    install: true,
+                    verbose: true,
+                    cleanTargetDir: false,
+                    cleanBowerDir: false,
+                    bowerOptions: {}
                 }
             }
         }
@@ -60,8 +96,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-bower-task');
+    
     // Default task(s).
-    grunt.registerTask('default', ['clean:pre', 'htmlConvert', 'concat', 'uglify', 'clean:post']);
+    grunt.registerTask('default', ['clean:pre', 'bower', 'htmlConvert', 'concat', 'uglify', 'stylus', 'clean:post']);
 
 };

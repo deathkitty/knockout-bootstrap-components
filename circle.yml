@@ -1,0 +1,8 @@
+general:
+  artifacts:
+    - "dist"
+
+test:
+  pre:
+    - npm install -g grunt-cli
+    - grunt
