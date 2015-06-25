@@ -22,8 +22,7 @@
       "selected":true,
       "updated":false,
       "error":true
-    }
-  ,
+    },
     {
       "number": 3,
       "name": "John",
@@ -33,8 +32,7 @@
       "selected":true,
       "updated":true,
       "error":true
-    }
-  ,
+    },
     {
       "number": 4,
       "name": "Marie",
@@ -44,8 +42,7 @@
       "selected":true,
       "updated":true,
       "error":false
-    }
-  ,
+    },
     {
       "number": 5,
       "name": "Hugh",

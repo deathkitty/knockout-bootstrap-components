@@ -1,0 +1,30 @@
+/**
+PRIMARY COLOURS
+#337ab7
+#ffa500
+#dc143c
+**/
+
+@import 'jeet'
+@import '_colours.styl'
+
+#prettyBar
+  span()
+  background-color colour-primary
+  height 300px
+  padding 20px
+  h3, p
+    text-align center
+    color white
+    a
+      color colour-info
+  .logo
+    font-weight bold
+    font-size 72px
+    /* WebKit (Safari/Chrome) Only */
+    -webkit-text-stroke 1px white
+    /* If we weren't using text-shadow, we'd set a fallback color
+       and use this to set color instead
+      -webkit-text-fill-color: white; */
+    color colour-primary
+    text-shadow 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px  1px 0 white, 1px  1px 0 white

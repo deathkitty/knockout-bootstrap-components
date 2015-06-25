@@ -24,6 +24,30 @@ var kobs = {};
         }
     };
 
+    _root.isFunction = function(func) {
+        var getType = {};
+        return func && getType.toString.call(func) === '[object Function]';
+    };
+    
+    _root.isArray = function(array){
+        if( Object.prototype.toString.call( array ) === '[object Array]' ) {
+            return true;
+        }
+        
+        return false;
+    };
+    
+    _root.guid = function() {
+        var S4 = function() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+        };
+        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    };
+    
+    _root.escapeHTML = function(str){
+        return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+    };
+    
 })(kobs);
 
 $(function(){

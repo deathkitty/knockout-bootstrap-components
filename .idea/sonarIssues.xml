@@ -18,6 +18,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/bower.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/build/knockout-bootstrap-components.min.js">
           <value>
             <set />
@@ -73,12 +78,62 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/public/javascripts/tableViewModel.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/stylesheets/_colours.styl">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/stylesheets/index.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/stylesheets/index.styl">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/stylesheets/main.styl">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/stylesheets/main.styl.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/views/components/table.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/public/views/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/knockout-bootstrap-code.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/knockout-bootstrap-components.js">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/knockout-bootstrap-table.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/templates/knockout-bootstrap-code.html">
           <value>
             <set />
           </value>

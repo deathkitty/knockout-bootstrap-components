@@ -1,0 +1,53 @@
+@import '_colours.styl'
+@import 'jeet'
+@import 'rupture'
+
+body
+  position relative
+
+white-outline-text()
+  font-weight bold
+  font-size 46px
+  /* WebKit (Safari/Chrome) Only */
+  -webkit-text-stroke 1px white
+  /* If we weren't using text-shadow, we'd set a fallback color
+     and use this to set color instead
+    -webkit-text-fill-color: white; */
+  color colour-primary
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
+.navbar
+  margin-bottom 0
+
+.main
+  +mobile()
+    span()
+  +tablet()
+    center(1050px, 20px)
+  +desktop()
+    center(1090px, 20px)
+  
+#content
+  column(4/5)
+
+#sidebar
+  column(1/5)
+  padding-top 20px
+  #sidenav
+    width 150px
+  .affix
+    top 20px
+  
+.header
+  span()
+  background-color colour-primary
+  height 120px
+  div
+    color white
+    +tablet()
+      center(1050px, 20px)
+    +desktop()
+      center(1090px, 20px)
+    h3
+      white-outline-text()
+      
