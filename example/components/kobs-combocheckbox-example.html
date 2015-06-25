@@ -92,6 +92,7 @@
                        ">
             </kobs-combocheckbox>
         </div>
+        <div class="col-lg-2" style="width: 10px;"></div>
         <div class="col-lg-2">
             <kobs-combocheckbox params="
                            data:testData,
@@ -104,6 +105,10 @@
             </kobs-combocheckbox>
         </div>
     </div>
+    <br/>
+    <button type="button" class="btn btn-default col-lg-1" data-bind="click:testButtonClicked">Test</button>
+    <br/><br/>
+    <div data-bind="html:selectedList()"></div>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

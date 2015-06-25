@@ -6,8 +6,7 @@ $(function(){
             // Get the values for the combo-box data, selected data, prompt and key names from the parameters or use the
             // default values.
             self.inputIsReadOnly = params.readOnly === false ? false : true;
-            self.initialData     = params.data     || undefined;
-            self.selectedData    = params.selected || undefined;
+            self.dataSource     = params.data     || undefined;
             self.listHeight      = params.height   || "300px";
             self.promptString    = params.prompt   || "Please select...";
             self.labelKeyName    = params.labelKey || "label";
@@ -15,6 +14,7 @@ $(function(){
             self.stateKeyName    = params.stateKey || "selected";
 
             // Define the observable values.
+            self.selectedData  = params.selected || ko.observableArray();
             self.filterText    = ko.observable('');
             self.inputHasFocus = ko.observable(false);
 
@@ -28,9 +28,9 @@ $(function(){
 
             self.filteredItems = ko.computed(function() {
                 if(!self.filterText()) {
-                    return self.initialData();
+                    return self.dataSource();
                 } else {
-                    return ko.utils.arrayFilter(self.initialData(), function(item) {
+                    return ko.utils.arrayFilter(self.dataSource(), function(item) {
                         var textToSearch = item[self.labelKeyName];
                         var regexPattern = new RegExp(self.filterText(),'ig');
                         return textToSearch.match(regexPattern) === null ? false : true;
@@ -57,7 +57,13 @@ $(function(){
             };
 
             // When a list item is clicked, invert the selection status then update the array of selected items.
-            self.listItemClicked = function(data){
+            self.listItemClicked = function(data, event){
+                // If the target of the click event was a check-box, the data needs to be flipped to counter the change
+                // to the observable that was brought about by the markup change.
+                if ($(event.target).is("input") && event.target.type === "checkbox"){
+                    data[self.stateKeyName] = !data[self.stateKeyName];
+                }
+
                 // Invert the selection status.
                 data[self.stateKeyName] = !data[self.stateKeyName];
 
@@ -71,6 +77,7 @@ $(function(){
 
                 // Refresh the combo-box data.
                 self.refresh();
+
                 return true;
             };
 
@@ -78,12 +85,12 @@ $(function(){
             // notify all the observers that a change occurred in the data so that the user interface may be updated.
             self.refresh = function(){
                 // Create a temp array with all the elements of the combo-box data in their current state.
-                var tempArray = self.initialData().slice(0);
+                var tempArray = self.dataSource().slice(0);
                 // Remove all elements from the combobox array.
-                self.initialData.removeAll();
+                self.dataSource.removeAll();
                 // Re-insert all the data into the combobox array.
                 for(var index in tempArray){
-                    self.initialData.push(tempArray[index]);
+                    self.dataSource.push(tempArray[index]);
                 }
             };
         },

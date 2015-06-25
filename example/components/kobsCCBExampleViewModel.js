@@ -35,6 +35,14 @@ function kobsCCBExampleViewModel(){
     ]);
 
     self.selectedItems = ko.observableArray();
+    self.selectedList = ko.observable('');
+
+    self.testButtonClicked = function(){
+        var selected = self.selectedItems();
+        for(var i = 0; i < selected.length; i++){
+            self.selectedList(self.selectedList() + "<br/>" + selected[i].idioticKeyName);
+        }
+    }
 }
 
 $(function(){
